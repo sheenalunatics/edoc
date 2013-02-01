@@ -1,0 +1,4 @@
+<br /><h1>Welcome to E-Document Management System</h1>
+<p>
+	<h3><font color="blue">Please Select Menu</font> <?php echo $runid?></h3>
+</p>

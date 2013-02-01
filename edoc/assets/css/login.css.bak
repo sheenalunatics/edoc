@@ -1,0 +1,116 @@
+body {
+	margin: 0; 
+	padding: 0; 
+	font-family: Tahoma;
+	font-size: 13px;
+	background: #FFF;
+	color: #444;
+}
+.login_wrapper {
+	clear: both;
+	display: block;
+	width: 300px;
+	height: 600px;
+	margin: 0 auto;
+}
+.login_wrapper .tablelogin{
+	background: #FFF;
+	display: block;
+	float: right;
+	padding: 20px 10px 15px 10px;/* 20px 10px 15px 10px; */
+	width: 320px;
+	margin: 0 auto;
+	margin-top: 70px;
+	right: 0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+.login_wrapper .tablelogin td{
+	padding: 5px;
+}
+.header {
+	background-color: #8cc63f;	
+	font-size:11px;
+	font-family: "Courier New", Courier, monospace;
+	display:block;
+	text-align:center;
+}
+.support{
+	clear: both;
+	width: 1000px;
+	margin: 0 auto;
+	-webkit-border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	border-radius: 5px;
+}
+.support p{
+	width: 50%; float: left; display: block;
+	padding: 0; 
+	margin: 0;
+	color: #EEE; 
+	font-size: 11px;
+}
+.support p a{
+	color: #EEE;
+	text-decoration: none;
+}
+.support p a:hover{
+	text-decoration: underline;
+	color: #FFF;
+}
+input[type=text], input[type=password]{
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	border: 1px solid #888;
+	-webkit-box-shadow: inset 0 2px 2px #ddd, 0 1px 0 #fff;
+	-moz-box-shadow: inset 0 2px 2px #ddd, 0 1px 0 #fff;
+	box-shadow: inset 0 2px 2px #ddd, 0 1px 0 #fff;
+	padding: 3px 5px 3px 5px;
+	background-position: 10px 6px;
+	font-family: Tahoma;
+	font-size: 12px;
+	display: block;
+	float: left;
+	width: 85%;
+	margin: 0;
+}
+input[type=text]:focus, input[type=password]:focus {
+	outline: none;
+	border: 1px solid #77BACE;
+	-webkit-box-shadow: inset 0 2px 2px #ddd, 0 0 5px #7baffe;
+	-moz-box-shadow: inset 0 2px 2px #ddd, 0 0 5px #7baffe;
+	box-shadow: inset 0 2px 2px #ddd, 0 0 5px #7baffe;
+}
+input[type=submit]{
+	margin: 0 7px 0 0;
+	background: #EEE;
+	border: 1px solid #BBB;
+	-webkit-box-shadow: 0 1px 0 #fff;
+	-moz-box-shadow: 0 1px 0 #fff;
+	box-shadow: 0 1px 0 #fff;
+	height: 30px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 0 20px 0 20px;
+	text-shadow: 0 1px 0 #fff;
+	cursor: pointer;
+	font-size: 12px;
+	font-family: Arial;
+	font-weight: bold;
+	color: #333;
+}
+input[type=submit]:hover{
+	/*color: #FFF;
+	background: #317bf4;
+	text-shadow: 0 1px 0 #317bf4;*/
+	color: #000;
+	background: #CCC;
+	text-shadow: 0 1px 0 #000;
+	border: 1px solid #CCC;
+}
+form.cmxform input.error, form.cmxform select.error, form.cmxform textarea.error{ 
+	border: 1px solid #EA0000; background: #fff0f0; 
+}
