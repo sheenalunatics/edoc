@@ -1,0 +1,210 @@
+<?php
+Class Folder_model extends CI_Model
+{
+
+function folder_info_insert($data)
+ {
+	
+	$ret = $this->db->insert('folder', $data); 
+	 if($ret == true)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+ } 
+
+
+function folderid_check($id)
+ {
+   $this -> db -> select('folder_id');
+   $this -> db -> from('folder');
+   $this -> db -> where('folder_id = ' . "'" . $id . "'");
+   $this -> db -> limit(1);
+   $query = $this -> db -> get();
+
+   if($query -> num_rows() == 1)
+   {
+     return true;
+   }
+   else
+   {
+     return false;
+   }
+ }
+
+function folder_getall2($num, $offset)
+{
+	$this->db->select('folder_id,folder_name,division_id,create_date,edit_date,delete_date,create_folder');
+	//$this->db->order_by("edit_date", "desc");
+	//$this->db->distinct();
+	$query = $this->db->get('folder', $num, $offset);	
+	
+    if($query -> num_rows() > 0)
+   {
+     return $query->result_array();
+   }
+   else
+   {
+     return false;
+   }
+} 
+/*SELECT MAX( folder_id ) , folder_name, division_id,  `Create_Date` ,  `Edit_Date` ,  `Delete_Date` ,  `Create_Folder` 
+FROM folder GROUP BY folder_id 
+
+SELECT MAX( t.id ) , t.folder_id, t.folder_name, t.division_id, t.`Create_Date` , t.`Edit_Date` , t.`Delete_Date` , t.`Create_Folder` 
+FROM folder t
+LEFT JOIN folder t2 ON t.folder_id = t2.folder_id
+AND t.id > t2.id
+GROUP BY t2.folder_id
+
+SELECT t.folder_id, t.folder_name, t.division_id, t.`Create_Date` , MAX( t.`Edit_Date` ) , t.`Delete_Date` , t.`Create_Folder` 
+FROM folder t
+LEFT JOIN folder t2 ON t.folder_id = t2.folder_id
+GROUP BY t2.folder_id
+*/
+function folder_getall3($num, $offset)
+{
+	$this->db->select('t1.folder_id,t1.folder_name,t1.division_id,t1.create_date,max(t1.edit_date) as edit_date,max(t1.delete_date) as delete_date,t1.create_folder');
+	$this->db->from('folder t1');
+	$this->db->join('folder t2', 't1.folder_id = t2.folder_id','left');
+	//$this->db->where('t1.id > t2.id');
+	$this->db->group_by('t2.folder_id'); 
+	//$this->db->order_by("t1.id", "desc");
+	//$this->db->distinct();
+	$query = $this->db->get('folder', $num, $offset);	
+	
+    if($query -> num_rows() > 0)
+   {
+     return $query->result_array();
+   }
+   else
+   {
+     return false;
+   }
+} 
+
+function folder_getrowbyid($id)
+{
+	$this->db->select('folder_id,folder_name,division_id,create_date,edit_date,delete_date,create_folder');
+	$this->db->from('folder');
+	$this->db->where('folder_id',$id);
+	//$this->db->where_in('username', $names);
+	$this->db->order_by("edit_date", "desc");
+	//$this->db->distinct();
+	//$query = $this->db->get('folder', $num, $offset);	
+	$query = $this->db->get();	
+	
+    if($query -> num_rows() > 0)
+   {
+     return $query->result_array();
+   }
+   else
+   {
+     return false;
+   }
+} 
+
+ function folder_getid_dist()
+ {
+	$this->db->distinct();
+	$this->db->select('folder_id');
+	$this->db->from('folder');
+	
+	$query = $this->db->get();
+		if($query->num_rows() > 0)
+	   {
+		 return $query->result_array(); 
+	   }
+	   else
+	   {
+		 return false;
+	   }
+ } 
+
+function folder_countid_dist()
+ {
+	$this->db->distinct();
+	$this->db->select('folder_id');
+	$this->db->from('folder');
+	$query = $this -> db -> get();
+	return $query -> num_rows();	    
+ } 
+
+
+ function folder_info($id)
+ {
+   $this -> db -> select('folder_id,folder_name,division_id,create_date,edit_date,delete_date,create_folder');
+   $this -> db -> from('folder');
+   $this -> db -> where('folder_id = ' .  $id );
+   $this -> db -> order_by('edit_date' , 'desc' );
+   $this -> db -> limit(1);
+	
+   $query = $this -> db -> get();
+
+   if($query -> num_rows() == 1)
+   {
+     return $query->result_array();
+   }
+   else
+   {
+     return false;
+   }
+ } 
+
+ function folder_info2($id)
+ {
+   $this -> db -> select('folder_id,folder_name,division_id,create_date,edit_date,delete_date,create_folder');
+   $this -> db -> from('folder');
+   $this -> db -> where('folder_id = ' .  $id );
+   $this -> db -> order_by('delete_date' , 'desc' );
+   $this -> db -> limit(1);
+	
+   $query = $this -> db -> get();
+
+   if($query -> num_rows() == 1)
+   {
+     return $query->result_array();
+   }
+   else
+   {
+     return false;
+   }
+ } 
+
+
+ function folder_info_update($id,$data)
+ {
+	$this->db->where('folder_id', $id);
+	$ret = $this->db->update('folder', $data); 
+   
+   if($ret == true)
+   {
+     return true;
+   }
+   else
+   {
+     return false;
+   }
+ } 
+
+ function folder_info_del($id)
+ {
+	$this->db->where('folder_id', $id);
+	$ret = $this->db->delete('folder'); 
+  
+   if($ret == true)
+   {
+     return true;
+   }
+   else
+   {
+     return false;
+   }
+ }
+
+
+}
+?>
